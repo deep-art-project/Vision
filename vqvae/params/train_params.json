@@ -1,0 +1,13 @@
+{
+	"lr":2e-4,
+	"num_epochs":6,
+	"log_path":"./logs/",
+	"restore_path":null,
+	"sample_path":"./save/sample/",
+	"sample_size":32,
+	"sample_interval":4,
+	"save_interval":4,
+	"max_ckpts":6,
+	"device_ids":null,
+	"loss_func":"l1"
+}

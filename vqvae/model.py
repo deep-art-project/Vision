@@ -68,7 +68,7 @@ class VQ_VAE(nn.Module):
 
 	def backward_encoder(self):
 		torch.autograd.backward(
-			self.saved_z_e, self.saved_grad, retain_graph=True
+			self.saved_z_e, self.saved_grad
 			)
 
 class Encoder(nn.Module):
