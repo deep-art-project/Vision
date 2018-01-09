@@ -1,0 +1,14 @@
+{
+	"k_dim":512,
+	"d_dim":640,
+	"beta":0.25,
+	"params":{
+		 "hidden_channels":16,
+		 "out_channels":10,
+		 "stride":2,
+		 "kernel_size":4,
+		 "res_kernel_size":[3, 1],
+		 "num_convs":2,
+		 "num_res_blocks":2
+	}
+}
