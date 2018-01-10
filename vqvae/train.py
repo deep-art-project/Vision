@@ -19,7 +19,8 @@ def get_params(filepath):
 def save_checkpoint(model, epoch_trained, replace=False):
 	filepath = './save/model/ckpt' + str(epoch_trained) + '.pth.tar'
 	torch.save({
-		"model":model.state_dict(), "epoch_trained":epoch_trained})
+		"model":model.state_dict(), "epoch_trained":epoch_trained
+		}, os.path.join(filepath))
 	if replace:
 		ckpts = glob.glob("./save/model/ckpt*")
 		ckpt_nums = [int(x.split('/')[-1].split('.')[0][4:]) for x in ckpts]
@@ -111,7 +112,8 @@ def train():
 				tag.replace('.', '/'), value.cpu().data.numpy(),
 				epoch_trained + epoch + 1
 				)
-		if (epoch_trained + epoch + 1) % train_params["sample_interval"]:
+		if (epoch_trained + epoch + 1) % train_params["sample_interval"] == 0:
+			reconstruct = reconstruct / 2 + 0.5
 			logger.image_summary(
 				'reconstruct_images',
 				reconstruct.cpu().data[:train_params["sample_size"], :].view(
@@ -119,7 +121,7 @@ def train():
 					).numpy(),
 				epoch_trained + epoch + 1
 				)
-		if (epoch_trained + epoch + 1) % train_params["save_interval"]:
+		if (epoch_trained + epoch + 1) % train_params["save_interval"] == 0:
 			num_ckpts = len(glob.glob("./save/model/ckpt*"))
 			if num_ckpts == train_params["max_ckpts"]:
 				save_checkpoint(net, epoch_trained + epoch + 1, True)

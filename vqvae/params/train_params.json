@@ -1,6 +1,6 @@
 {
 	"lr":2e-4,
-	"num_epochs":6,
+	"num_epochs":10,
 	"log_path":"./logs/",
 	"restore_path":null,
 	"sample_path":"./save/sample/",
